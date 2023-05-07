@@ -1,0 +1,25 @@
+#!/bin/sh
+
+echo "\n== Run Swagger Tests=="
+NO_COVERAGE=true bundle exec rspec  --pattern  "spec/swagger/**/*_spec.rb" --order defined
+RC=$?
+if [ ! $RC -eq 0 ]; then
+  echo 'Swagger tests detected issues.'
+  exit 1
+fi
+
+# In order to lint your file, use the npm package @stoplight/spectral
+# echo "\n== Run Swagger Linting=="
+# node_modules/.bin/spectral lint --ruleset=swagger/v1/spectral_ruleset.yaml swagger/v1/swagger.yaml
+# if [ ! $? -eq 0 ]; then
+#   echo 'The generated swagger/v2/swagger.yaml is invalid, commit aborted'
+#   exit 7
+# fi
+
+# One of the tests generates the swagger file. If the developer did not run it
+# locally it may change and we want to error.
+git diff --ignore-all-space --exit-code ./swagger
+if [ ! $? -eq 0 ]; then
+  echo 'There are differences after running tests. Probably because the generated swagger files changed'
+  exit 6
+fi

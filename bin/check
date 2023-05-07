@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+bin/check_rails_tests
+bin/check_swagger_tests

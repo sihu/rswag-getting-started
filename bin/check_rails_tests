@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "\n== Run Rails Tests=="
+bundle exec rspec
+RC=$?
+if [ ! $RC -eq 0 ]; then
+  echo 'RSpec unit tests detected issues.'
+  exit 1
+fi
