@@ -1,2 +1,11 @@
 inherit_gem:
   renuocop: config/base.yml
+
+Rails/I18nLocaleTexts:
+    Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - "spec/system/**/*"
+    - "spec/views/**/*"
+    - "spec/models/seeds_spec.rb"

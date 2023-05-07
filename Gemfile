@@ -8,6 +8,7 @@ ruby File.read(File.join(__dir__, '.ruby-version'))
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
+gem 'pg'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 gem 'rubocop'
 gem 'sprockets-rails'
