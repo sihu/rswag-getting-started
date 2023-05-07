@@ -4,21 +4,24 @@ require_relative 'boot'
 
 require 'rails/all'
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module RswagPlayground
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        # either check for the origin or use a API_TOKEN
+        origins '*'
+        resource '*',
+                 headers: :any,
+                 methods: %i[get post put patch delete options head],
+                 max_age: 600,
+                 # You can expose all headers `expose: *` or just the ones you need - f.e. for JWT
+                 expose: %w[access-control-allow-origin access-control-expose-headers access-control-max-age
+                            Authorization ETag x-api-token]
+      end
+    end
   end
 end
