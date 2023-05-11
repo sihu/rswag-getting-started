@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repo is based on a Rails meetup talk of the
+2023-05-11 and shows how to use rswag providing
+some tweaks to avoid common pitfalls.
 
-Things you may want to cover:
+Look at the commits to understand what we changed.
 
-* Ruby version
+## Copyright
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Copyright 2023 [Renuo AG](https://www.renuo.ch/).
