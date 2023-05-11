@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
+  include ApiCallable
+
   before_action :set_blog, only: %i[show edit update destroy]
+  before_action :ensure_api_token_for_json, only: %i[index]
 
   # GET /blogs or /blogs.json
   def index

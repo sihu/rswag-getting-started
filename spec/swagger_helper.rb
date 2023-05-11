@@ -55,8 +55,35 @@ RSpec.configure do |config|
               message: { type: 'string' }
             }
           },
+          blog_item: {
+            type: 'object',
+            properties: {
+              id: { type: 'integer' },
+              title: { type: 'string' },
+              text: { type: 'string' },
+              created_at: { type: 'string' },
+              updated_at: { type: 'string' },
+              url: { type: 'string' }
+            },
+            required: %w[id title text created_at updated_at url]
+          }
+        },
+        securitySchemes: {
+          api_key: {
+            type: :apiKey,
+            name: 'X-API-TOKEN',
+            in: :header
+          },
+          # For a JWT-based authorization
+          # bearer_auth: {
+          #   description: 'Bearer Token',
+          #   type: :apiKey,
+          #   name: 'Authorization',
+          #   in: :header
+          # }
         }
-      }
+      },
+
     }
   }
 
