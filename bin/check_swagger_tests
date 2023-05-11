@@ -1,7 +1,8 @@
 #!/bin/sh
 
 echo "\n== Run Swagger Tests=="
-NO_COVERAGE=true bundle exec rspec  --pattern  "spec/swagger/**/*_spec.rb" --order defined
+NO_COVERAGE=true bundle exec rspec --pattern  "spec/swagger/**/*_spec.rb" \
+ --order defined
 RC=$?
 if [ ! $RC -eq 0 ]; then
   echo 'Swagger tests detected issues.'

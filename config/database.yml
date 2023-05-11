@@ -12,9 +12,3 @@ development:
 test:
   <<: *default
   database: rswag-playground_test
-
-production:
-  <<: *default
-  database: rswag-playground_production
-  username: rswag-playground
-  password: <%= ENV['ONE11_DATABASE_PASSWORD'] %>

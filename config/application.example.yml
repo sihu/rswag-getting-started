@@ -1,0 +1,11 @@
+APP_HOST: 'rswag-getstarted.localhost'
+APP_PORT: '3000'
+
+API_TOKEN: 'test-12345'
+
+# Basic auth credentials for the API (if not present, basic auth is disabled)
+API_BASIC_AUTH_USERNAME: ''
+API_BASIC_AUTH_PASSWORD: ''
+
+test:
+  API_TOKEN: 'test-12345'

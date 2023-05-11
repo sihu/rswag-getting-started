@@ -1,8 +1,21 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'rswag/specs/swagger_formatter'
 
+# reuse code by specifying shared examples
+Dir[Rails.root.join('spec/swagger/support/**/*.rb')].sort.each { |f| require f }
 RSpec.configure do |config|
+  config.swagger_root = Rails.root.join('swagger').to_s
+  config.add_formatter(Rswag::Specs::SwaggerFormatter)
+  ExampleGeneratorHelper.init(config)
+
+  # e.g. Workaround for https://github.com/rswag/rswag/issues/359 in Rakefile
+  # config.swagger_dry_run = false
+
+  # Strict schema validation (By default, if response body contains undocumented properties tests will pass)
+  config.swagger_strict_schema_validation = true
+
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
   # to ensure that it's configured to serve Swagger from the same folder
