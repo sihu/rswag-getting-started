@@ -5,9 +5,11 @@ require 'rswag/specs/swagger_formatter'
 
 # reuse code by specifying shared examples
 Dir[Rails.root.join('spec/swagger/support/**/*.rb')].sort.each { |f| require f }
+
 RSpec.configure do |config|
   config.swagger_root = Rails.root.join('swagger').to_s
   config.add_formatter(Rswag::Specs::SwaggerFormatter)
+  DeterministicSchemaHelper.make_deterministic_examples(config)
   ExampleGeneratorHelper.init(config)
 
   # e.g. Workaround for https://github.com/rswag/rswag/issues/359 in Rakefile
